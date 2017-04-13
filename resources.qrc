@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>play.ico</file>
+        <file>pause.ico</file>
+        <file>rewind.png</file>
+    </qresource>
+</RCC>
