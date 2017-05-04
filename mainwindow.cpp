@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     player = new QMediaPlayer();
+
     connect(player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(stateChanged(QMediaPlayer::State)));
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(scrubberUpdate(qint64)));
     connect(player, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));

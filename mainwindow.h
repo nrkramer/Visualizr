@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QtMultimedia/QMediaPlayer>
 #include <QMimeDatabase>
+#include <QGraphicsScene>
+#include <visualizrglwidget.h>
 
 namespace Ui {
 class MainWindow;
