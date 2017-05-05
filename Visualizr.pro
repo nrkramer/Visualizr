@@ -25,5 +25,4 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    frag_shader.frag \
     vert_shader.vert

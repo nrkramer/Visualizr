@@ -4,8 +4,4 @@
         <file>pause.ico</file>
         <file>rewind.png</file>
     </qresource>
-    <qresource prefix="/">
-        <file>frag_shader.frag</file>
-        <file>vert_shader.vert</file>
-    </qresource>
 </RCC>

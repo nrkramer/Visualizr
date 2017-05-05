@@ -25,16 +25,8 @@ protected:
     void resizeGL(int w, int h);
     void paintGL();
 
-    bool initShaders();
-
 private:
     QMatrix4x4 m_projection; // projection matrix
-
-    QOpenGLVertexArrayObject vao;
-    QOpenGLBuffer vbo;
-    QOpenGLShaderProgram *shader_program;
-    QOpenGLShader *vertex_shader;
-    QOpenGLShader *fragment_shader;
 };
 
 #endif // VISUALIZRGLWIDGET_H
