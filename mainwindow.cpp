@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     player = new QMediaPlayer();
+    pluginLoader = new QPluginLoader("../build-CubePlugin-Desktop-Debug/libCubePlugin.so");
 
     connect(player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(stateChanged(QMediaPlayer::State)));
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(scrubberUpdate(qint64)));
@@ -19,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->playButton, SIGNAL(toggled(bool)), this, SLOT(playPauseClicked(bool)));
     connect(ui->rewindButton, SIGNAL(clicked(bool)), this, SLOT(rewindFile()));
+
+    if(!pluginLoader->load())
+        qDebug() << "Failed to load " << pluginLoader->fileName() << ":\n" << pluginLoader->errorString();
 }
 
 MainWindow::~MainWindow()

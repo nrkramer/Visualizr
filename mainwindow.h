@@ -5,7 +5,10 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QMimeDatabase>
 #include <QGraphicsScene>
-#include <visualizrglwidget.h>
+#include <QPluginLoader>
+
+#include "visualizrglwidget.h"
+#include "visualizrplugin.h"
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +33,8 @@ private:
     QMediaPlayer *player;
     QMimeDatabase db;
     qint64 totalDuration;
+
+    QPluginLoader* pluginLoader;
 
 private slots:
     void updateScrubber();

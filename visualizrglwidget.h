@@ -13,12 +13,16 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
+#include "visualizrplugin.h"
+
 class VisualizrGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 
 public:
     VisualizrGLWidget(QWidget* parent);
+
+    bool setRenderPlugin(VisualizrPlugin* plugin);
 
 protected:
     void initializeGL();

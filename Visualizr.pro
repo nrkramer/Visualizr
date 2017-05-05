@@ -17,12 +17,10 @@ SOURCES += main.cpp\
     visualizrglwidget.cpp
 
 HEADERS  += mainwindow.h \
-    visualizrglwidget.h
+    visualizrglwidget.h \
+    visualizrplugin.h
 
 FORMS    += mainwindow.ui
 
 RESOURCES += \
     resources.qrc
-
-DISTFILES += \
-    vert_shader.vert
