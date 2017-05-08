@@ -5,6 +5,7 @@
 
 #include <QString>
 #include <QOpenGLFunctions>
+#include <QtCore/QtCore>
 
 // This class needs to be inhereted from visualizr plugins
 class VisualizrPlugin {
