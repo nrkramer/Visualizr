@@ -3,7 +3,6 @@
 
 #define ARRAY_SIZE(array) (sizeof(array)/sizeof(array[0]))
 
-#include "cubeplugin_global.h"
 #include "../Visualizr/visualizrplugin.h"
 
 #include <QOpenGLShaderProgram>
@@ -15,13 +14,14 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-class CubePlugin : public VisualizrPlugin {
+class CubePlugin : public QObject, VisualizrPlugin {
+    Q_OBJECT
     Q_INTERFACES(VisualizrPlugin)
-    Q_PLUGIN_METADATA(IID "Kramer.Visualizr.CubePlugin")
+    Q_PLUGIN_METADATA(IID "Kramer.Visualizr.CubePlugin/1.0" FILE "cubeplugin.json")
 
 public:
     CubePlugin();
-    virtual ~CubePlugin();
+    ~CubePlugin();
 
     QString pluginName();
 
@@ -30,14 +30,22 @@ public:
     void draw();
     bool initialize();
 
+    void setSize(const int &width, const int &height);
+
 private:
     bool vulkan;
 
     const static float vertices[3*6*6];
     const static float colors[4*6*6];
 
+    int width;
+    int height;
+
     // OPENGL
-    QMatrix4x4 rotation;
+    int mvp_location;
+    QMatrix4x4 m_model;
+    QMatrix4x4 m_view;
+    QMatrix4x4 m_perspective;
     QOpenGLVertexArrayObject vao;
     QOpenGLBuffer vertexBuffer;
     QOpenGLBuffer colorBuffer;

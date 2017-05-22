@@ -7,6 +7,8 @@
 #include <QOpenGLFunctions>
 #include <QtCore/QtCore>
 
+#define VisualizrPlugin_iid "Kramer.Visualizr.VisualizrPlugin/1.0"
+
 // This class needs to be inhereted from visualizr plugins
 class VisualizrPlugin {
 public:
@@ -18,10 +20,11 @@ public:
     virtual void draw() = 0;
     virtual QString pluginName() = 0;
 
+    virtual void setSize(const int &width, const int &height) = 0;
+
     virtual ~VisualizrPlugin() {}
 };
 
-#define VisualizrPlugin_iid "Kramer.Visualizr.VisualizrPlugin"
 Q_DECLARE_INTERFACE(VisualizrPlugin, VisualizrPlugin_iid)
 
 #endif // VISUALIZRPLUGIN

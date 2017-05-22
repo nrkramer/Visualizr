@@ -21,13 +21,22 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->playButton, SIGNAL(toggled(bool)), this, SLOT(playPauseClicked(bool)));
     connect(ui->rewindButton, SIGNAL(clicked(bool)), this, SLOT(rewindFile()));
 
-    if(!pluginLoader->load())
+    connect(ui->openGLWidget, SIGNAL(glReady()), this, SLOT(glWidgetReady()));
+
+    cubePlugin = qobject_cast<VisualizrPlugin*>(pluginLoader->instance());
+    if(!cubePlugin)
         qDebug() << "Failed to load " << pluginLoader->fileName() << ":\n" << pluginLoader->errorString();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::glWidgetReady()
+{
+    qInfo() << "OpenGLWidget is ready";
+    ui->openGLWidget->setRenderPlugin(cubePlugin);
 }
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)

@@ -35,6 +35,7 @@ private:
     qint64 totalDuration;
 
     QPluginLoader* pluginLoader;
+    VisualizrPlugin* cubePlugin;
 
 private slots:
     void updateScrubber();
@@ -43,6 +44,8 @@ private slots:
     void stateChanged(QMediaPlayer::State status);
     void playPauseClicked(bool toggle);
     void rewindFile();
+
+    void glWidgetReady();
 };
 
 #endif // MAINWINDOW_H

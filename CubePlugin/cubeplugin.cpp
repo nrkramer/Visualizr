@@ -2,6 +2,8 @@
 
 CubePlugin::CubePlugin()
 {
+    width = 0;
+    height = 0;
 }
 
 CubePlugin::~CubePlugin()
@@ -35,6 +37,12 @@ bool CubePlugin::initialize()
     return initGL();
 }
 
+void CubePlugin::setSize(const int &width, const int &height)
+{
+    this->width = width;
+    this->height = height;
+}
+
 bool CubePlugin::initGL()
 {
     vertexBuffer = QOpenGLBuffer(QOpenGLBuffer::VertexBuffer);
@@ -47,6 +55,16 @@ bool CubePlugin::initGL()
     }
 
     shader_program->bind();
+
+    // set uniforms
+    mvp_location = shader_program->uniformLocation("mvp");
+    m_model.setToIdentity();
+    m_view.setToIdentity();
+    m_perspective.setToIdentity();
+    m_perspective.perspective(60.0f, width / float(height), 0.01f, 1000.0f);
+    m_model.translate(0.0f, 0.0f, 10.0f);
+    QMatrix4x4 mvp = m_model * m_view * m_perspective;
+    shader_program->setUniformValue(mvp_location, mvp);
 
     // create vertex buffer
     vertexBuffer.create();

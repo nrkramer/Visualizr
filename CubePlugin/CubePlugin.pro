@@ -17,7 +17,6 @@ DEFINES += CUBEPLUGIN_LIBRARY
 SOURCES += cubeplugin.cpp
 
 HEADERS += cubeplugin.h\
-        cubeplugin_global.h \
     ../Visualizr/visualizrplugin.h
 
 unix {
@@ -30,4 +29,5 @@ RESOURCES += \
 
 DISTFILES += \
     vertex_shader.vert \
-    fragment_shader.frag
+    fragment_shader.frag \
+    cubeplugin.json

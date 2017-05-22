@@ -29,8 +29,13 @@ protected:
     void resizeGL(int w, int h);
     void paintGL();
 
+signals:
+    void glReady();
+
 private:
     QMatrix4x4 m_projection; // projection matrix
+
+    VisualizrPlugin* currentPlugin;
 };
 
 #endif // VISUALIZRGLWIDGET_H
